@@ -27,6 +27,7 @@ with open(USER_FILE,"w",encoding='utf-8') as f :
      json.dump(users,f,indent=2)
 
 
+
 asaync def ws_handler(ws):
   data = await ws.recv()
   user = json.loads(data)
