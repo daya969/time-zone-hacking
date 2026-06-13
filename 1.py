@@ -37,10 +37,12 @@ save_user(user)
 print('OK')
 
 
+
 asaync def start_ws():
   asaync with websickets.serve(ws_handler,"0.0.0.0",WS_PORT):
     print(f"[+] WebSockets on ws://0.0.0.0:{WS_PORT}")
     await asyncio.future()
+
 
 
 def start_http():
@@ -50,3 +52,4 @@ def start_http():
 
 if __name__ == "__main__":
   threading.thread(target=start_http,deamon=True).start()
+  asyncio.run(start_ws())
